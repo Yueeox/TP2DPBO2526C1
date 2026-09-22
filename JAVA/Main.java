@@ -29,13 +29,8 @@ public class Main {
             System.out.println("=============================================");
             System.out.print("Pilih menu (0-5): ");
             
-            int pilihan = 5; // default 5 agar ketika di isikan huruf maka langsung exit
-            try {
-                pilihan = scanner.nextInt(); // Berpotensi error jika diisi huruf
-            } catch (Exception e) {
-                System.out.println("Error: Anda harus memasukkan angka! Coba lagi.\n");
-                scanner.next(); 
-            }
+            int pilihan = scanner.nextInt();
+            scanner.nextLine(); // Memakan \n(enter)
 
             // Case untuk pilihan menu
             switch (pilihan) {
@@ -118,7 +113,8 @@ public class Main {
         System.out.println("\n--- TAMBAH MASTER FILM BARU ---");
         System.out.println("ID Film: " + nextFilmId);
         
-        System.out.print("Judul Film: "); String judul = scanner.nextLine();
+        System.out.print("Judul Film: "); 
+        String judul = scanner.nextLine();
 
         int tahun;
         while (true) {
