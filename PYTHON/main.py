@@ -202,9 +202,55 @@ def tambah_tiket_baru():
     tampilkan_tabel_tiket_dinamis()
 
 
+# FUNGSI UTAMA: MENAMPILKAN SELURUH DATA DARI 3 CLASS DALAM SATU TABEL DINAMIS TUNGGAL
 def tampilkan_semua_data():
-    tampilkan_tabel_tiket_dinamis()
-    tampilkan_master_film_dinamis()
+    if not list_tiket:
+        print("Belum ada data tiket untuk ditampilkan.")
+        return
+
+    headers = [
+        "ID Tiket", "Judul Film", "Tahun", "Hak Cipta", "Genre",
+        "Durasi", "Rumah Produksi", "Bioskop", "Studio", "Kursi", "Harga", "Jadwal"
+    ]
+
+    widths = [len(h) for h in headers]
+    rows = []
+
+    # Format data dan hitung lebar kolom maksimal secara dinamis
+    for t in list_tiket:
+        row_data = [
+            str(t.get_id()),
+            t.get_judul(),
+            str(t.get_tahun()),
+            t.get_hak_cipta(),
+            t.get_genre(),
+            f"{t.get_durasi_menit()} Menit",
+            t.get_rumah_produksi(),
+            t.get_nama_tempat(),
+            f"Studio {t.get_studio()}",
+            f"{t.get_row()}{t.get_seat()}",
+            format_rupiah(t.get_harga()),
+            f"{t.get_tanggal()} {t.get_waktu()}"
+        ]
+        rows.append(row_data)
+
+        for i, val in enumerate(row_data):
+            widths[i] = max(widths[i], len(val))
+
+    line_sep = "+" + "+".join(["-" * (w + 2) for w in widths]) + "+"
+
+    print("\n--- DATA SELURUH CLASS (MEDIA, FILM, TIKET) DALAM SATU TABEL ---")
+    print(line_sep)
+
+    header_str = "| " + " | ".join([f"{headers[i]:<{widths[i]}}" for i in range(len(headers))]) + " |"
+    print(header_str)
+    print(line_sep)
+
+    for row in rows:
+        row_str = "| " + " | ".join([f"{row[i]:<{widths[i]}}" for i in range(len(row))]) + " |"
+        print(row_str)
+
+    print(line_sep)
 
 
 def main():

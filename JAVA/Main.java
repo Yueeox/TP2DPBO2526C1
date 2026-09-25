@@ -35,7 +35,7 @@ public class Main {
             // Case untuk pilihan menu
             switch (pilihan) {
                 
-                case 0 -> tampilkanSemuaData();
+                case 0 -> tampilkanSemuaTabel();
                 case 1 -> tampilkanMasterFilmDinamis();
                 case 2 -> tampilkanTabelTiketDinamis();
                 case 3 -> tambahMasterFilm(); 
@@ -72,6 +72,71 @@ public class Main {
             f.getGenre(), f.getDurasiMenit(), f.getRumahProduksi(),
             bioskop, studio, harga, row, seat, tgl, waktu
         ));
+    }
+
+    private static String formatRupiah(int harga) {
+        String str = String.valueOf(harga);
+        StringBuilder res = new StringBuilder();
+        int count = 0;
+        for (int i = str.length() - 1; i >= 0; i--) {
+            res.append(str.charAt(i));
+            count++;
+            if (count % 3 == 0 && i != 0) res.append(".");
+        }
+        return "Rp " + res.reverse().toString();
+    }
+
+    public static void tampilkanSemuaTabel() {
+        if (listTiket.isEmpty()) {
+            System.out.println("Belum ada data tiket.");
+            return;
+        }
+
+        // Header awal & ukuran minimal
+        int wId = 8, wJudul = 10, wTahun = 5, wHak = 9, wGenre = 5, wDurasi = 6, wStudio = 14;
+        int wBioskop = 7, wStudioBioskop = 6, wKursi = 5, wHarga = 5, wJadwal = 13;
+
+        for (Tiket t : listTiket) {
+            String studioOut = "Studio " + t.getStudio();
+            String durasiStr = t.getDurasiMenit() + " Menit";
+            String kursi = String.valueOf(t.getRow()) + t.getSeat();
+            String jadwal = t.getTanggal() + " " + t.getWaktu();
+
+            wId = Math.max(wId, String.valueOf(t.getId()).length());
+            wJudul = Math.max(wJudul, t.getJudul().length());
+            wTahun = Math.max(wTahun, String.valueOf(t.getTahun()).length());
+            wHak = Math.max(wHak, t.getHakCipta().length());
+            wGenre = Math.max(wGenre, t.getGenre().length());
+            wDurasi = Math.max(wDurasi, durasiStr.length());
+            wStudio = Math.max(wStudio, t.getRumahProduksi().length());
+            wBioskop = Math.max(wBioskop, t.getNamaTempat().length());
+            wStudioBioskop = Math.max(wStudioBioskop, studioOut.length());
+            wKursi = Math.max(wKursi, kursi.length());
+            wHarga = Math.max(wHarga, formatRupiah(t.getHarga()).length());
+            wJadwal = Math.max(wJadwal, jadwal.length());
+        }
+
+        String lineSep = "+" + "-".repeat(wId + 2) + "+" + "-".repeat(wJudul + 2) + "+" + "-".repeat(wTahun + 2) + "+"
+                + "-".repeat(wHak + 2) + "+" + "-".repeat(wGenre + 2) + "+" + "-".repeat(wDurasi + 2) + "+"
+                + "-".repeat(wStudio + 2) + "+" + "-".repeat(wBioskop + 2) + "+" + "-".repeat(wStudioBioskop + 2) + "+"
+                + "-".repeat(wKursi + 2) + "+" + "-".repeat(wHarga + 2) + "+" + "-".repeat(wJadwal + 2) + "+";
+
+        System.out.println("\n--- DATA SELURUH CLASS (MEDIA, FILM, TIKET) DALAM SATU TABEL ---");
+        System.out.println(lineSep);
+        System.out.printf("| %-" + wId + "s | %-" + wJudul + "s | %-" + wTahun + "s | %-" + wHak + "s | %-" + wGenre + "s | %-" + wDurasi + "s | %-" + wStudio + "s | %-" + wBioskop + "s | %-" + wStudioBioskop + "s | %-" + wKursi + "s | %-" + wHarga + "s | %-" + wJadwal + "s |\n",
+                "ID Tiket", "Judul Film", "Tahun", "Hak Cipta", "Genre", "Durasi", "Rumah Produksi", "Bioskop", "Studio", "Kursi", "Harga", "Jadwal");
+        System.out.println(lineSep);
+
+        for (Tiket t : listTiket) {
+            String durasiStr = t.getDurasiMenit() + " Menit";
+            String studioOut = "Studio " + t.getStudio();
+            String kursi = String.valueOf(t.getRow()) + t.getSeat();
+            String jadwal = t.getTanggal() + " " + t.getWaktu();
+
+            System.out.printf("| %-" + wId + "d | %-" + wJudul + "s | %-" + wTahun + "d | %-" + wHak + "s | %-" + wGenre + "s | %-" + wDurasi + "s | %-" + wStudio + "s | %-" + wBioskop + "s | %-" + wStudioBioskop + "s | %-" + wKursi + "s | %-" + wHarga + "s | %-" + wJadwal + "s |\n",
+                    t.getId(), t.getJudul(), t.getTahun(), t.getHakCipta(), t.getGenre(), durasiStr, t.getRumahProduksi(), t.getNamaTempat(), studioOut, kursi, formatRupiah(t.getHarga()), jadwal);
+        }
+        System.out.println(lineSep);
     }
 
     // untuk menampilkan data film secara dinamis
@@ -281,11 +346,5 @@ public class Main {
             System.out.printf(formatHeader, t.getId(), t.getJudul(), t.getTahun(), t.getGenre(), t.getNamaTempat(), studioOut, kursi, hargaFormatted, jadwal);
         }
         System.out.println(lineSeparator);
-    }
-
-    // menampilkan semua data
-    private static void tampilkanSemuaData(){
-        tampilkanTabelTiketDinamis();
-        tampilkanMasterFilmDinamis();
     }
 }

@@ -2,6 +2,7 @@
 #include <vector>
 #include <iomanip>
 #include <cctype>
+#include <algorithm>
 #include "Tiket.cpp"
 
 using namespace std;
@@ -273,9 +274,79 @@ void tambahTiketBaru() {
     tampilkanTabelTiketDinamis();
 }
 
+// FUNGSI UTAMA: MENAMPILKAN SELURUH DATA DARI 3 CLASS DALAM SATU TABEL DINAMIS TUNGGAL
 void tampilkanSemuaData() {
-    tampilkanTabelTiketDinamis();
-    tampilkanMasterFilmDinamis();
+    if (listTiket.empty()) {
+        cout << "Belum ada data tiket untuk ditampilkan.\n";
+        return;
+    }
+
+    // Header default dan lebar minimal awal
+    int wId = 8, wJudul = 10, wTahun = 5, wHakCipta = 9, wGenre = 5;
+    int wDurasi = 6, wRumahProd = 14, wBioskop = 7, wStudio = 6, wKursi = 5, wHarga = 5, wJadwal = 13;
+
+    // Kalkulasi ukuran dinamis untuk semua atribut
+    for (const auto& t : listTiket) {
+        string durasiStr = to_string(t.getDurasiMenit()) + " Menit";
+        string studioOut = "Studio " + t.getStudio();
+        string kursi = string(1, t.getRow()) + to_string(t.getSeat());
+        string jadwal = t.getTanggal() + " " + t.getWaktu();
+
+        wId = max(wId, (int)to_string(t.getId()).length());
+        wJudul = max(wJudul, (int)t.getJudul().length());
+        wTahun = max(wTahun, (int)to_string(t.getTahun()).length());
+        wHakCipta = max(wHakCipta, (int)t.getHakCipta().length());
+        wGenre = max(wGenre, (int)t.getGenre().length());
+        wDurasi = max(wDurasi, (int)durasiStr.length());
+        wRumahProd = max(wRumahProd, (int)t.getRumahProduksi().length());
+        wBioskop = max(wBioskop, (int)t.getNamaTempat().length());
+        wStudio = max(wStudio, (int)studioOut.length());
+        wKursi = max(wKursi, (int)kursi.length());
+        wHarga = max(wHarga, (int)formatRupiah(t.getHarga()).length());
+        wJadwal = max(wJadwal, (int)jadwal.length());
+    }
+
+    string lineSeparator = "+" + repeatString("-", wId + 2) + "+" + repeatString("-", wJudul + 2) + "+" + repeatString("-", wTahun + 2) + "+"
+                         + repeatString("-", wHakCipta + 2) + "+" + repeatString("-", wGenre + 2) + "+" + repeatString("-", wDurasi + 2) + "+"
+                         + repeatString("-", wRumahProd + 2) + "+" + repeatString("-", wBioskop + 2) + "+" + repeatString("-", wStudio + 2) + "+"
+                         + repeatString("-", wKursi + 2) + "+" + repeatString("-", wHarga + 2) + "+" + repeatString("-", wJadwal + 2) + "+";
+
+    cout << "\n--- DATA SELURUH CLASS (MEDIA, FILM, TIKET) DALAM SATU TABEL ---\n";
+    cout << lineSeparator << "\n";
+    cout << "| " << left << setw(wId) << "ID Tiket"
+         << " | " << left << setw(wJudul) << "Judul Film"
+         << " | " << left << setw(wTahun) << "Tahun"
+         << " | " << left << setw(wHakCipta) << "Hak Cipta"
+         << " | " << left << setw(wGenre) << "Genre"
+         << " | " << left << setw(wDurasi) << "Durasi"
+         << " | " << left << setw(wRumahProd) << "Rumah Produksi"
+         << " | " << left << setw(wBioskop) << "Bioskop"
+         << " | " << left << setw(wStudio) << "Studio"
+         << " | " << left << setw(wKursi) << "Kursi"
+         << " | " << left << setw(wHarga) << "Harga"
+         << " | " << left << setw(wJadwal) << "Jadwal" << " |\n";
+    cout << lineSeparator << "\n";
+
+    for (const auto& t : listTiket) {
+        string durasiStr = to_string(t.getDurasiMenit()) + " Menit";
+        string studioOut = "Studio " + t.getStudio();
+        string kursi = string(1, t.getRow()) + to_string(t.getSeat());
+        string jadwal = t.getTanggal() + " " + t.getWaktu();
+
+        cout << "| " << left << setw(wId) << t.getId()
+             << " | " << left << setw(wJudul) << t.getJudul()
+             << " | " << left << setw(wTahun) << t.getTahun()
+             << " | " << left << setw(wHakCipta) << t.getHakCipta()
+             << " | " << left << setw(wGenre) << t.getGenre()
+             << " | " << left << setw(wDurasi) << durasiStr
+             << " | " << left << setw(wRumahProd) << t.getRumahProduksi()
+             << " | " << left << setw(wBioskop) << t.getNamaTempat()
+             << " | " << left << setw(wStudio) << studioOut
+             << " | " << left << setw(wKursi) << kursi
+             << " | " << left << setw(wHarga) << formatRupiah(t.getHarga())
+             << " | " << left << setw(wJadwal) << jadwal << " |\n";
+    }
+    cout << lineSeparator << "\n";
 }
 
 int main() {

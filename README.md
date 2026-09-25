@@ -68,7 +68,7 @@ Tugas Praktikum 2 DPBO kelas C1 dengan tema Bioskop (Inherintence)
 <br>Error Handling<br>
 <img src="DOKUMENTASI/D_JAVA/menuError0.png" width=500px> 
 <h3>Tampil Semua Data</h3>
-<img src="DOKUMENTASI/D_JAVA/tampilSemuaData0.png" width=500px> 
+<img src="DOKUMENTASI/D_JAVA/tampilSemuaData1.png" width=500px> 
 <h3>Tampil Master Film</h3>
 <img src="DOKUMENTASI/D_JAVA/tampilMasterFilm0.png" width=500px> 
 <h3>Tampil Tiket Film</h3>
@@ -90,7 +90,7 @@ Tugas Praktikum 2 DPBO kelas C1 dengan tema Bioskop (Inherintence)
 <br>Error Handling<br>
 <img src="DOKUMENTASI/D_CPP/menuError0.png" width=500px> 
 <h3>Tampil Semua Data</h3>
-<img src="DOKUMENTASI/D_CPP/tampilSemuaData0.png" width=500px> 
+<img src="DOKUMENTASI/D_CPP/tampilSemuaData1.png" width=500px> 
 <h3>Tampil Master Film</h3>
 <img src="DOKUMENTASI/D_CPP/tampilMasterFilm0.png" width=500px> 
 <h3>Tampil Tiket Film</h3>
@@ -106,3 +106,50 @@ Tugas Praktikum 2 DPBO kelas C1 dengan tema Bioskop (Inherintence)
 <br>Error Handling 2<br>
 <img src="DOKUMENTASI/D_CPP/tambahTiketError1.png" width=500px> 
 
+<h2>Python</h2>
+<h3>Menu</h3>
+<img src="DOKUMENTASI/D_PYTHON/menu0.png" width=500px>
+<br>Error Handling<br>
+<img src="DOKUMENTASI/D_PYTHON/menuError0.png" width=500px> 
+<h3>Tampil Semua Data</h3>
+<img src="DOKUMENTASI/D_PYTHON/tampilSemuaData1.png" width=500px> 
+<h3>Tampil Master Film</h3>
+<img src="DOKUMENTASI/D_PYTHON/tampilMasterFilm0.png" width=500px> 
+<h3>Tampil Tiket Film</h3>
+<img src="DOKUMENTASI/D_PYTHON/tampilTiketFilm0.png" width=500px> 
+<h3>Tambah Film</h3>
+<img src="DOKUMENTASI/D_PYTHON/tambahFilm0.png" width=500px> 
+<br>Error Handling<br>
+<img src="DOKUMENTASI/D_PYTHON/tambahFilmError0.png" width=500px> 
+<h3>Tambah Tiket Film</h3>
+<img src="DOKUMENTASI/D_PYTHON/tambahTiket0.png" width=500px> 
+<br>Error Handling 1<br>
+<img src="DOKUMENTASI/D_PYTHON/tambahTiketError0.png" width=500px>
+<br>Error Handling 2<br>
+<img src="DOKUMENTASI/D_PYTHON/tambahTiketError1.png" width=500px> 
+
+<h2>PHP</h2>
+<h3>Menu</h3>
+<h3>Tambah Film</h3>
+<img src="DOKUMENTASI/D_PHP/tambahFilm0.png" width=300px> 
+<img src="DOKUMENTASI/D_PHP/tambahFilm1.png" width=300px> 
+<img src="DOKUMENTASI/D_PHP/tambahFilm2.png" width=300px>
+<br>Error Handling<br>
+<img src="DOKUMENTASI/D_PHP/tambahFilmError0.png" width=300px> 
+<img src="DOKUMENTASI/D_PHP/tambahFilmError1.png" width=300px> 
+<h3>Tambah Tiket Film</h3>
+<img src="DOKUMENTASI/D_PHP/tambahTiket0.png" width=300px> 
+<img src="DOKUMENTASI/D_PHP/tambahTiket1.png" width=300px> 
+<img src="DOKUMENTASI/D_PHP/tambahTiket2.png" width=300px> 
+<br>Error Handling 1<br>
+<img src="DOKUMENTASI/D_PHP/tambahTiketError0.png" width=300px>
+<img src="DOKUMENTASI/D_PHP/tambahTiketError1.png" width=300px>
+<img src="DOKUMENTASI/D_PHP/tambahTiketError2.png" width=300px>
+<img src="DOKUMENTASI/D_PHP/tambahTiketError3.png" width=300px>
+<img src="DOKUMENTASI/D_PHP/tambahTiketError4.png" width=300px>
+<img src="DOKUMENTASI/D_PHP/tambahTiketError5.png" width=300px>
+<h3>Data Film</h3>
+<img src="DOKUMENTASI/D_PHP/tampilFilm0.png" width=300px>
+<img src="DOKUMENTASI/D_PHP/tampilFilm1.png" width=300px>
+<h3>Data Tiket</h3>
+<img src="DOKUMENTASI/D_PHP/tampilTiket0.png" width=300px>
